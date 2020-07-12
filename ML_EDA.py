@@ -20,11 +20,11 @@ import xgboost
 def main():
     st.title("Streamlit Auto ML")
 
-    activities = ["EDA", "Model Building", "Plot"]
+    activities = ["Regression", "Classification"]
     choice = st.sidebar.selectbox("Choose the activity", activities)
 
-    if choice == "EDA":
-        st.subheader("Exploratory Data Analysis")
+    if choice == "Regression":
+        st.subheader("Automated Regression Model")
 
         data = st.file_uploader("Upload your files", type="csv")
 
@@ -191,16 +191,8 @@ def main():
 
 
 
-    if choice == "Model Building":
-        st.subheader("Model Building")
-
-        data = st.file_uploader("Upload your files", type="csv")
-
-        if data is not None:
-            st.text("YEss")
-
-    if choice == "Plot":
-        st.subheader("Plotting")
+    if choice == "Classification":
+        st.subheader("Classification")
 
         data = st.file_uploader("Upload your files", type="csv")
 
@@ -210,19 +202,7 @@ def main():
 
 
             columns = df.columns.to_list()
-            choice = st.multiselect("Select 2 columns for scatter plot", columns)
-            try:
-                if len(choice) <3 and len(choice) >0:
-                    x = choice[0]
-                    y = choice[1]
-                    plt.scatter(df[x], df[y], c="green")
-                    st.pyplot()
-
-                else:
-                    st.error("Please select two columns")
-
-            except:
-                st.error("Please select two columns")
+            
 
 
 
